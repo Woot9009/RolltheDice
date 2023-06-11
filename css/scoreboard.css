@@ -1,0 +1,440 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+li {
+  list-style: none;
+}
+img,
+fieldset {
+  border: none;
+}
+img,
+form {
+  vertical-align: middle;
+}
+i,
+em,
+address {
+  font-style: normal;
+}
+a {
+  text-decoration: none;
+  color: black;
+}
+body {
+  background-color: gainsboro;
+}
+#wrapper {
+  width: 100%;
+  min-width: 540px;
+  margin: 0 auto;
+}
+
+#page1 {
+  position: relative;
+  width: 100%;
+  height: 100svh;
+  text-align: center;
+  background: url(../images/850x400.jpg) no-repeat center top/100% 100%;
+}
+#page1 h1 {
+  position: absolute;
+  top: 10%;
+  left: 0;
+  right: 0;
+  margin: auto;
+  color: #fff;
+  padding: 0 20px;
+}
+#title {
+  font-family: 'Shadows Into Light';
+}
+#caesar {
+  font-family: 'Source Code Pro';
+}
+
+#diceAnimation {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50px;
+  bottom: 0;
+  margin: auto;
+  cursor: pointer;
+}
+
+.dice {
+  width: 50px;
+  height: 50px;
+  border: 1px solid black;
+  position: absolute;
+  background: white;
+  border-radius: 3px;
+}
+
+.dice > span {
+  position: relative;
+  display: flex;
+  border-radius: 50%;
+  border: 1px solid black;
+  background-color: black;
+  width: 10px;
+  height: 10px;
+}
+
+.dice1 {
+  transform: rotateY(0deg) translate3d(0, 0, 25px);
+}
+.dice1 > span {
+  top: 19px;
+  left: 19px;
+}
+
+.dice2 {
+  transform: rotateY(90deg) translate3d(0, 0, 25px);
+}
+.dice2 > span:nth-child(1) {
+  top: 5px;
+  left: 5px;
+}
+.dice2 > span:nth-child(2) {
+  top: 22px;
+  left: 32px;
+}
+
+.dice3 {
+  transform: rotateY(180deg) translate3d(0, 0, 25px);
+}
+.dice3 > span:nth-child(1) {
+  top: 2px;
+}
+.dice3 > span:nth-child(2) {
+  top: 6px;
+  left: 19px;
+}
+.dice3 > span:nth-child(3) {
+  top: 10px;
+  left: 35px;
+}
+
+.dice4 {
+  transform: rotateY(270deg) translate3d(0, 0, 25px);
+}
+.dice4 > span:nth-child(1) {
+  top: 10px;
+  left: 6px;
+}
+.dice4 > span:nth-child(2) {
+  top: 20px;
+  left: 6px;
+}
+.dice4 > span:nth-child(3) {
+  top: 7px;
+  left: 30px;
+}
+.dice4 > span:nth-child(4) {
+  top: -26px;
+  left: 30px;
+}
+
+.dice5 {
+  transform: rotateX(90deg) translate3d(0, 0, 25px);
+}
+.dice5 > span:nth-child(1) {
+  top: 6px;
+  left: 2px;
+}
+.dice5 > span:nth-child(2) {
+  top: 22px;
+  left: 2px;
+}
+.dice5 > span:nth-child(3) {
+  top: 11px;
+  left: 35px;
+}
+.dice5 > span:nth-child(4) {
+  top: -30px;
+  left: 35px;
+}
+.dice5 > span:nth-child(5) {
+  top: -27px;
+  left: 19px;
+}
+
+.dice6 {
+  transform: rotateX(270deg) translate3d(0, 0, 25px);
+}
+.dice6 > span:nth-child(1) {
+  top: 3px;
+  left: 6px;
+}
+.dice6 > span:nth-child(2) {
+  top: 6px;
+  left: 6px;
+}
+.dice6 > span:nth-child(3) {
+  top: 10px;
+  left: 6px;
+}
+.dice6 > span:nth-child(4) {
+  top: -34px;
+  left: 30px;
+}
+.dice6 > span:nth-child(5) {
+  top: -30px;
+  left: 30px;
+}
+.dice6 > span:nth-child(6) {
+  top: -26px;
+  left: 30px;
+}
+
+section {
+  transform-style: preserve-3d;
+  width: 50px;
+  height: 50px;
+  position: relative;
+  perspective: 2000px;
+  margin: 50px 50px 50px 125px;
+  transform: rotateX(-20deg) rotateY(-30deg);
+}
+
+@keyframes dice {
+  0% {
+    transform: rotateX(-20deg) rotateY(-30deg) rotateZ(0deg);
+  }
+  50% {
+    transform: rotateX(-300deg) rotateY(360deg) rotateZ(-135deg);
+  }
+  100% {
+    transform: rotateX(360deg) rotateY(360deg) rotateZ(360deg);
+  }
+}
+
+.diceAnimation {
+  animation-name: dice;
+  animation-direction: alternate;
+  animation-duration: 5s;
+  animation-iteration-count: infinite;
+}
+
+#page2 {
+  display: none;
+  position: absolute;
+  top: 20%;
+  width: 100%;
+  height: auto;
+  box-sizing: border-box;
+  text-align: center;
+  margin: auto;
+}
+#page2 h2 {
+  padding: 15px 0;
+}
+#page2 button {
+  width: 100px;
+  height: 30px;
+  border-radius: 10px;
+  font-weight: bold;
+  background-color: black;
+  color: #fff;
+  cursor: pointer;
+  transition: all 0.4s;
+}
+#page2 button:hover {
+  background-color: #fff;
+  color: black;
+}
+#page2 button:active {
+  background-color: beige;
+  color: #555;
+}
+#tabSection {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 130px;
+  margin: auto;
+  width: 30%;
+  height: 200px;
+  min-width: 200px;
+  line-height: 190px;
+  text-align: center;
+  border: 1px solid black;
+  box-sizing: border-box;
+  font-size: 100px;
+  font-family: 'Source Code Pro';
+  cursor: pointer;
+}
+.increaseNum {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 50%;
+}
+.increaseNum:hover,
+.increaseNum:active {
+  background: rgb(251, 255, 6) url(../images/upside.png) no-repeat center 20px;
+  opacity: 0.4;
+}
+.decreaseNum {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 50%;
+}
+.decreaseNum:hover,
+.decreaseNum:active {
+  background: rgb(196, 69, 255) url(../images/downside.png) no-repeat center 60px;
+  opacity: 0.4;
+}
+#tabSection img {
+  cursor: default;
+}
+.basicAvatar {
+  position: absolute;
+  right: -45px;
+  bottom: 0;
+  z-index: -10;
+}
+
+.avatar {
+  position: absolute;
+  opacity: 0;
+  transition: 0.3s;
+}
+.avatar1 {
+  left: -70px;
+  bottom: -30px;
+}
+.avatar2 {
+  left: -90px;
+  top: 20px;
+}
+.avatar3 {
+  left: 75%;
+  bottom: -85px;
+}
+.avatar4 {
+  left: 15%;
+  bottom: -90px;
+  transform: rotate(-75deg);
+}
+.avatar5 {
+  right: 80%;
+  top: -80px;
+}
+.avatar6 {
+  right: 5%;
+  top: -80px;
+}
+
+#page3 {
+  width: 100%;
+  margin: 0 auto;
+  display: none;
+}
+#page3 input {
+  height: 25px;
+  margin: 2px;
+}
+#playerList {
+  padding: 5px 0;
+  text-align: center;
+}
+
+#saveName {
+  display: block;
+}
+#saveScores {
+  display: none;
+}
+#saveName,
+#saveScores {
+  width: 290px;
+  height: 30px;
+  border-width: 3px;
+  border-radius: 8px;
+  margin: 10px auto;
+}
+
+.name {
+  text-align: center;
+  width: 8em;
+  color: black;
+  font-weight: bold;
+}
+.scoreInput {
+  opacity: 0;
+  transition: 1s;
+  margin-left: 10px;
+  text-align: center;
+  width: 90px;
+}
+
+#rankings {
+  width: 100%;
+  font-size: 14px;
+  box-sizing: border-box;
+  background-color: rgba(10, 10, 10, 0.1);
+}
+#rankings h3 {
+  text-align: center;
+  font-weight: normal;
+  font-size: 14px;
+  padding: 10px;
+}
+#rankings > div {
+  max-width: 300px;
+  margin: 0 auto;
+  padding-bottom: 10px;
+}
+#rankings p {
+  display: inline;
+  font-weight: bold;
+  font-size: 16px;
+}
+#rankings span {
+  float: right;
+  color: #666;
+}
+
+#scoreListBtn {
+  display: none;
+  cursor: pointer;
+  height: 30px;
+  line-height: 30px;
+  text-align: center;
+  transition: all 1s;
+}
+#scoreListBtn.active {
+  background-color: black;
+  color: white;
+  transition: all 1.5s;
+}
+#scoreList {
+  text-align: center;
+  line-height: 14px;
+  width: 100%;
+  min-width: 540px;
+  max-height: 0;
+  margin: 0 auto;
+  overflow: hidden;
+  transition: all 1s;
+  background-color: darkgray;
+  color: white;
+}
+#scoreList.active {
+  max-height: 100vh;
+  overflow: auto;
+  background-color: black;
+  transition: all 2s;
+}
+.score {
+  font-size: 12px;
+  border-right: 1px solid orange;
+  padding: 0 5px;
+}

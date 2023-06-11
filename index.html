@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="images/favicon.ico" />
+    <link href="https://fonts.googleapis.com/css2?family=Shadows+Into+Light&display=swap" rel="stylesheet"/><!--웹폰트 "Shadows Into Light"-->
+    <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro&display=swap" rel="stylesheet"/><!--웹폰트 "Source Code Pro"-->
+    <script src="https://unpkg.com/typeit@8.7.1/dist/index.umd.js"></script><!--TypeIt 라이브러리-->
+    <title>Roll the Dice</title>
+    <link rel="stylesheet" href="css/scoreboard.css" />
+  </head>
+
+  <body>
+    <div id="wrapper">
+      <div id="page1">
+        <h1 id="title">Roll the Dice.</h1>
+        <h1 id="caesar"></h1>
+        <section id="diceAnimation" onclick="diceAnimation(this)">
+          <div class="dice dice1">
+            <span></span>
+          </div>
+          <div class="dice dice2">
+            <span></span>
+            <span></span>
+          </div>
+          <div class="dice dice3">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+          <div class="dice dice4">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+          <div class="dice dice5">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+          <div class="dice dice6">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+        </section>
+      </div><!--page1 끝-->
+
+      <div id="page2">
+        <h2>인원수를 입력하세요</h2>
+        <button onclick="setPlayers()">확인</button>
+        <div id="tabSection">
+          <div id="numPlayers">2</div>
+          <div class="increaseNum" onclick="increaseNum()"></div>
+          <div class="decreaseNum" onclick="decreaseNum()"></div>
+          <img class="basicAvatar" src="images/group_right_resize.png" alt="penguins" width="45px"/>
+
+          <img class="avatar avatar1" src="images/avatar_1.png" alt="penguin" height="100px" />
+          <img class="avatar avatar2" src="images/avatar_2.png" alt="penguin" height="100px" />
+          <img class="avatar avatar3" src="images/avatar_3.png" alt="penguin" height="100px" />
+          <img class="avatar avatar4" src="images/avatar_4.png" alt="penguin" height="100px" />
+          <img class="avatar avatar5" src="images/avatar_5.png" alt="penguin" height="80px" />
+          <img class="avatar avatar6" src="images/avatar_6.png" alt="penguin" height="80px" />
+        </div>
+      </div><!--page2 끝-->
+
+      <div id="page3">
+        <div id="playerList"></div>
+        <button id="saveName" onclick="saveName()" disabled>이름 저장</button>
+        <button id="saveScores" onclick="saveScores()" disabled>점수 입력</button>
+        <div id="rankings"></div>
+        <p id="scoreListBtn" onclick="toggleScoreList()">라운드 기록🧾</p>
+        <div id="scoreList"></div>
+      </div><!--page3 끝-->
+    </div><!--wrapper 끝-->
+
+    <script>
+      const page1 = document.getElementById('page1');
+      const page2 = document.getElementById('page2');
+      const page3 = document.getElementById('page3');
+      const dice = document.getElementById('diceAnimation');
+      const title = document.getElementById('title');
+      const saveNameBtn = document.getElementById('saveName');
+      const saveScoresBtn = document.getElementById('saveScores');
+      const scoreListBtn = document.getElementById('scoreListBtn');
+      const scoreListDiv = document.getElementById('scoreList');
+
+      //주사위 및 TypeIt 애니메이션
+      function diceAnimation(e) {
+        dice.setAttribute('class', 'diceAnimation');
+        title.style.display = 'none';
+        new TypeIt('#caesar')
+          .type('The dice is cast..??')
+          .pause(500)
+          .delete(4, { delay: 600 })
+          .type(' !!!')
+          .go();
+        setTimeout(function () {
+          page1.style.display = 'none';
+          page2.style.display = 'block';
+        }, 6000);
+      }
+
+      //인원수 설정
+      let numPlayers = 2;
+      function increaseNum() {
+        if (numPlayers >= 8) {
+          return false;
+        } else {
+          numPlayers++;
+        }
+        document.getElementById('numPlayers').innerHTML = numPlayers;
+        switch (numPlayers) {
+          case 3:
+            document.querySelector('.avatar1').style.opacity = 1;
+            break;
+          case 4:
+            document.querySelector('.avatar2').style.opacity = 1;
+            break;
+          case 5:
+            document.querySelector('.avatar3').style.opacity = 1;
+            break;
+          case 6:
+            document.querySelector('.avatar4').style.opacity = 1;
+            break;
+          case 7:
+            document.querySelector('.avatar5').style.opacity = 1;
+            break;
+          case 8:
+            document.querySelector('.avatar6').style.opacity = 1;
+            break;
+        }
+      }
+      function decreaseNum() {
+        if (numPlayers <= 2) {
+          return false;
+        } else {
+          numPlayers--;
+        }
+        document.getElementById('numPlayers').innerHTML = numPlayers;
+        switch (numPlayers) {
+          case 2:
+            document.querySelector('.avatar1').style.opacity = 0;
+            break;
+          case 3:
+            document.querySelector('.avatar2').style.opacity = 0;
+            break;
+          case 4:
+            document.querySelector('.avatar3').style.opacity = 0;
+            break;
+          case 5:
+            document.querySelector('.avatar4').style.opacity = 0;
+            break;
+          case 6:
+            document.querySelector('.avatar5').style.opacity = 0;
+            break;
+          case 7:
+            document.querySelector('.avatar6').style.opacity = 0;
+            break;
+        }
+      }
+
+      //설정한 인원수만큼 플레이어 및 입력양식 추가
+      let players = [];
+      function setPlayers() {
+        page2.style.display = 'none';
+        page3.style.display = 'block';
+        const playerListDiv = document.getElementById('playerList');
+
+        for (let i = 0; i < numPlayers; i++) {
+          const playerDiv = document.createElement('div');
+          playerDiv.className = 'player';
+
+          const nameLabel = document.createElement('label');
+          nameLabel.textContent = `Player ${i + 1}: `;
+          playerDiv.appendChild(nameLabel);
+
+          const nameInput = document.createElement('input');
+          nameInput.type = 'text';
+          nameInput.placeholder = '이름';
+          nameInput.maxLength = 8;
+          nameInput.className = 'name';
+          playerDiv.appendChild(nameInput);
+
+          const scoreInput = document.createElement('input');
+          scoreInput.type = 'text';
+          scoreInput.placeholder = '라운드별 순위';
+          scoreInput.setAttribute('oninput', "this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');");//에러방지용 숫자정규표현식
+          scoreInput.className = 'scoreInput';
+          playerDiv.appendChild(scoreInput);
+
+          players.push({
+            name: nameInput,
+            score: scoreInput,
+            totalScore: 0,
+          });
+
+          playerListDiv.appendChild(playerDiv);
+        }
+
+        //에러방지용 조건부 이름저장버튼 활성화
+        const nameCheck = document.querySelectorAll('.name');
+        nameCheck.forEach((input) => {
+          input.addEventListener('input', () => {
+            const nameFilled = Array.from(nameCheck).every((input) => input.value !== '');
+            saveNameBtn.disabled = !nameFilled;
+          });
+        });
+      }
+
+      //에러방지용 조건부 점수입력버튼 활성화
+      function scoreCheck() {
+        let scores = document.querySelectorAll('.scoreInput');
+        scores.forEach((input) => {
+          input.addEventListener('input', () => {
+            const scoreFilled = Array.from(scores).every((input) => input.value !== '');
+            saveScoresBtn.disabled = !scoreFilled;
+          });
+        });
+      }
+
+      //이름저장버튼 누르면 점수입력버튼으로 바뀌고, 점수input과 라운드기록버튼 드러나도록
+      function saveName() {
+        const names = document.querySelectorAll('.name');
+        let scores = document.querySelectorAll('.scoreInput');
+        for (let i = 0; i < names.length; i++) {
+          scores.item(i).style.opacity = 1;
+          names.item(i).disabled = true;
+        }
+        saveNameBtn.style.display = 'none';
+        saveScoresBtn.style.display = 'block';
+        scoreListBtn.style.display = 'block';
+
+        scoreCheck();
+      }
+
+      function saveScores() {
+        const scoreListDiv = document.getElementById('scoreList');
+        const scoreList = [];
+
+        //개인별 점수기록
+        for (let i = 0; i < players.length; i++) {
+          const player = players[i];
+          player.totalScore += parseInt(player.score.value);
+          scoreList.push({ name: player.name.value, score: player.totalScore });
+
+          const scoreSpan = document.createElement('span');
+          scoreSpan.className = 'score';
+          scoreSpan.textContent = `${player.name.value}: ${player.score.value}`;
+          scoreListDiv.appendChild(scoreSpan);
+
+          player.score.value = ''; //다음 입력&합계를 위해 i번째인자의 score를 비움
+        }
+        scoreListDiv.appendChild(document.createElement('br'));
+        scoreListDiv.appendChild(document.createElement('br'));
+
+        scoreList.sort((a, b) => a.score - b.score); //이때의 score는 push받은 누적점수인 totalScore임
+
+        const rankingsDiv = document.getElementById('rankings');
+        rankingsDiv.innerHTML = '<h3>종합랭킹 🏆</h3>';
+
+        //동점자처리
+        let rank = 1;
+        let prevScore = scoreList[0].score;
+        let sameRankCount = 0;
+        for (let i = 0; i < scoreList.length; i++) {
+          if (scoreList[i].score !== prevScore) {
+            rank += sameRankCount; // 동점자 수만큼 다음 등수를 건너뛰어 순위를 매김
+            prevScore = scoreList[i].score; // 이전 점수를 현재 점수로 업데이트
+            sameRankCount = 0; // 동점자 수 초기화
+          }
+          sameRankCount++; // 동점자 수 증가
+
+          //종합랭킹 갱신
+          const rankDiv = document.createElement('div');
+          rankDiv.innerHTML = `<p>${rank}등: ${scoreList[i].name}</p> <span>- - - - ${scoreList[i].score}pt</span><br/>`;
+          rankingsDiv.appendChild(rankDiv);
+        }
+
+        //조건부 점수입력버튼 활성화 다시 세팅
+        saveScoresBtn.disabled = true;
+        scoreCheck();
+      }
+
+      //개인별 점수기록한 목록 슬라이드업다운
+      function toggleScoreList() {
+        scoreListBtn.classList.toggle('active');
+        scoreListDiv.classList.toggle('active');
+      }
+      
+    </script>
+  </body>
+</html>
