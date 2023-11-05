@@ -11,6 +11,15 @@
 - 하단의 라운드 기록을 클릭하면 그동안 저장한 기록이 나타납니다.
 
 <br/><br/>
+###### 인원수 입력
+<img src="https://github.com/Woot9009/RolltheDice/assets/128044785/3e0ed8cf-3702-433a-a6c4-ba3ec11c7fa2" width=50% height=auto/>
+
+<br/><br/>
+###### 순위입력 및 종합랭킹 계산, 라운드별 기록
+<img src="https://github.com/Woot9009/RolltheDice/assets/128044785/de60aecf-a19e-467e-9f7d-db901c489d55" width=50% height=auto/>
+
+
+<br/><br/>
 
 #### <만들며 어려웠던 점과 해결방법>
 <br/>
